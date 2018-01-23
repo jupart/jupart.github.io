@@ -4,105 +4,105 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://jupart.github.io/</loc>
-<lastmod>2018-01-23T15:18:15-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2018-01-23T15:34:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/archives.html</loc>
-<lastmod>2018-01-23T15:18:15-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2018-01-23T15:34:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tags.html</loc>
-<lastmod>2018-01-23T15:18:15-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2018-01-23T15:34:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/categories.html</loc>
-<lastmod>2018-01-23T15:18:15-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2018-01-23T15:34:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/attractor-release.html</loc>
+<loc>/attractor-release.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/kivent_to_android.html</loc>
+<loc>/kivent_to_android.html</loc>
 <lastmod>2017-08-03T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/category/game.html</loc>
+<loc>/category/game.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/category/tutorial.html</loc>
+<loc>/category/tutorial.html</loc>
 <lastmod>2017-08-03T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/kivent.html</loc>
+<loc>/tag/kivent.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/python.html</loc>
+<loc>/tag/python.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/buildozer.html</loc>
+<loc>/tag/buildozer.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/kivy.html</loc>
+<loc>/tag/kivy.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/android.html</loc>
+<loc>/tag/android.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/tag/cymunk.html</loc>
+<loc>/tag/cymunk.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://jupart.github.io/author/jupart.html</loc>
+<loc>/author/jupart.html</loc>
 <lastmod>2018-01-23T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

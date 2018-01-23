@@ -26,6 +26,13 @@ each button can be seen at the edge of said area. Depending on the magnets
 around the attractor, it will be pulled,
 pushed, or left alone to float on its current trajectory. Positive (red) repels
 positive and attracts negative (blue), neutral (grey) floats.&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt="Gameplay" class="align-center" src="images/attractor/attractor_gameplay.gif" style="width: 740.0px; height: 608.0px;" /&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;The attractor's goal is to reach the end of the current level, marked by the
 hole in the floor. Each level has an ideal number of charge changes and an
 ideal time taken to completion. The Reset button sends the attractor back to
