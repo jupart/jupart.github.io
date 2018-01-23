@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jupart - tutorial</title><link href="https://jupart.github.io/" rel="alternate"></link><link href="https://jupart.github.io/feeds/tutorial.atom.xml" rel="self"></link><id>https://jupart.github.io/</id><updated>2017-08-03T00:00:00-05:00</updated><entry><title>Setting up to deploy Kivent to Android</title><link href="https://jupart.github.io/kivent_to_android.html" rel="alternate"></link><published>2017-08-03T00:00:00-05:00</published><updated>2017-08-03T00:00:00-05:00</updated><author><name>jupart</name></author><id>tag:jupart.github.io,2017-08-03:/kivent_to_android.html</id><summary type="html">&lt;p class="first last"&gt;Steps to set up Python, Kivy, Kivent, and Cymunk for use with Android devices&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I recently put together a new machine and needed to get my python toolchain
+back up and running, so I decided to record the needed steps and post them
+here.&lt;/p&gt;
+&lt;p&gt;This post assumes your requirements are the same as mine, that your goal is to deploy apps
+that make use of Python 2.7, Kivy, Kivent's core, and Kivent's physics module (via Cymunk
+via Chipmunk2D) to Android.&lt;/p&gt;
+&lt;p&gt;I use Debian-based Linux distributions, like Ubuntu, so my dependencies will be installed
+via &lt;tt class="docutils literal"&gt;apt&lt;/tt&gt;. My workflow is to write the core of my app, run and test on my
+desktop/laptop machine, and then begin to deploy to my Android device for
+testing and improvements.&lt;/p&gt;
+&lt;p&gt;First, lets make sure we have &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;kivy&lt;/tt&gt;'s dependencies, and &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt;,
+which we use to house our python modules used for development for our project.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt install python-pip build-essential git python python-dev ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After we've set up and &lt;tt class="docutils literal"&gt;source&lt;/tt&gt;'d our &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt;, we can install
+&lt;tt class="docutils literal"&gt;cython&lt;/tt&gt; and then &lt;tt class="docutils literal"&gt;kivy&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; project_path
+&lt;span class="gp"&gt;$&lt;/span&gt; virtualenv project_env
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;source&lt;/span&gt; project_path/project_env/bin/activate
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; pip install cython kivy
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;kivent&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;cymunk&lt;/tt&gt; are not installable via pip at the time of this writing, so next,
+we need to clone their repositories off of github into a local folder (I typically store my
+tools in ~/Tools). We'll run their respective &lt;tt class="docutils literal"&gt;setup.py&lt;/tt&gt;'s using &lt;tt class="docutils literal"&gt;python&lt;/tt&gt; specific to
+the &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; we just created.&lt;/p&gt;
+&lt;p&gt;Note that &lt;tt class="docutils literal"&gt;kivent&lt;/tt&gt; contains several modules (core, cymunk, particles, etc.), so you'll
+want to install the ones you need for your project. I'm only using kivent_core
+and kivent_cymunk. You may be wondering why you need to install &lt;tt class="docutils literal"&gt;cymunk&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;kivent_cymunk&lt;/tt&gt;. This is because &lt;tt class="docutils literal"&gt;cymunk&lt;/tt&gt; is a module that supplies python
+bindings to a C-based library called Chipmunk2D. &lt;tt class="docutils literal"&gt;kivent_cymunk&lt;/tt&gt; builds on
+that by adding a game system you can use to apply physics to your entities.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; ~/Tools
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; git clone https://github.com/kivy/kivent.git
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; git clone https://github.com/tito/cymunk
+
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; cymunk
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; python setup.py build_ext install
+
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; ../kivent/modules/core
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; python setup.py build_ext install
+
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; ../cymunk
+&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; python setup.py build_ext install
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At this point, we can run our code and test on our desktop/laptop machines as
+needed. To deploy to our Android device, we'll need a tool called
+&lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Note that &lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt; is installed system-wide. It has nothing to do with
+your modules we've installed up til now. &lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt; reads your
+&lt;tt class="docutils literal"&gt;buildozer.spec&lt;/tt&gt; in your project's root directory and downloads the modules
+and tools it needs based on the information contained in it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;(project_env) $&lt;/span&gt; deactivate
+
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo pip install cython
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo pip install buildozer
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In order to build your project, it needs a Java compiler. Normally, we'd use
+&lt;tt class="docutils literal"&gt;openjdk&lt;/tt&gt; for this, but the Android SDK that &lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt; downloads uses
+source version 1.5, which is deprecated and &lt;tt class="docutils literal"&gt;openjdk&lt;/tt&gt; won't compile it. So
+instead, lets get Oracle's jdk, which complains, but will compile.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo add-apt-repository ppa:webupd8team/java
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt update
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt install oracle-java8-installer
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next, grab the 32-bit libraries &lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt; requires.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install build-essential ccache git libncurses5:i386 libstdc++6:i386 libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 python2.7 python2.7-dev unzip zlib1g-dev zlib1g:i386
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to add udev rules specific to your device. This lets you deploy
+your app to your Android device.  Find your device id by typing &lt;tt class="docutils literal"&gt;lsusb&lt;/tt&gt; into
+your terminal with your Android device plugged in via USB. If you run the command
+before and after plugging in your device, you should notice your device in the
+difference between the two. My device in &lt;tt class="docutils literal"&gt;lusb&lt;/tt&gt; looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;Bus 001 Device 003: ID 18d1:4ee7 Google Inc.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You need to add a line to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/etc/udev/rules.d/51-android.rules&lt;/span&gt;&lt;/tt&gt; (and create that
+file if it doesn't already exist) resembling the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;SUBSYSTEM==&amp;quot;usb&amp;quot;, ATTR{idVendor}==&amp;quot;18d1&amp;quot;, MODE=&amp;quot;0666&amp;quot;, GROUP=&amp;quot;plugdev&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;where &lt;tt class="docutils literal"&gt;18d1&lt;/tt&gt; is your device's idVendor (mine was &lt;tt class="docutils literal"&gt;18d1&lt;/tt&gt;, as it's a Google
+device). It's also covered &lt;a class="reference external" href="https://developer.android.com/studio/run/device.html"&gt;here&lt;/a&gt;.
+&lt;tt class="docutils literal"&gt;sudo udevadm control &lt;span class="pre"&gt;--reload-rules&lt;/span&gt; &amp;amp;&amp;amp; udevadm trigger&lt;/tt&gt; reloads your udev rules.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; lsusb
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo vim /etc/udev/rules.d/51-android.rules
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo udevadm control --reload-rules &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; udevadm trigger
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lets get back to our project's path, initialize the directory to use &lt;tt class="docutils literal"&gt;buildozer&lt;/tt&gt;,
+and edit our &lt;tt class="docutils literal"&gt;buildozer.spec&lt;/tt&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; project_path
+&lt;span class="gp"&gt;$&lt;/span&gt; buildozer init
+&lt;span class="gp"&gt;$&lt;/span&gt; vim buildozer.spec
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You'll want to change your &lt;tt class="docutils literal"&gt;buildozer.spec&lt;/tt&gt; file for each project, focusing
+on the &lt;tt class="docutils literal"&gt;requirements&lt;/tt&gt; tag contained within. Now you should be able to run the
+following command to deploy your app on your device!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; buildozer android debug deploy
+&lt;/pre&gt;&lt;/div&gt;
+</content><category term="kivent"></category><category term="python"></category><category term="buildozer"></category><category term="kivy"></category><category term="android"></category><category term="cymunk"></category></entry></feed>
