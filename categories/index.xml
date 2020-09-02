@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on jupart&#39;s blog</title>
+    <link>jupart.github.io/categories/</link>
+    <description>Recent content in Categories on jupart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Jan 2018 00:00:00 -0500</lastBuildDate>
+    
+	<atom:link href="jupart.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>blog</title>
+      <link>jupart.github.io/categories/blog/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

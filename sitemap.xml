@@ -1,111 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-<loc>/</loc>
-<lastmod>2018-01-23T15:34:14-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/archives.html</loc>
-<lastmod>2018-01-23T15:34:14-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tags.html</loc>
-<lastmod>2018-01-23T15:34:14-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/categories.html</loc>
-<lastmod>2018-01-23T15:34:14-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/attractor-release.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/kivent_to_android.html</loc>
-<lastmod>2017-08-03T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/category/game.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/category/tutorial.html</loc>
-<lastmod>2017-08-03T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/kivent.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/python.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/buildozer.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/kivy.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/android.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/cymunk.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/author/jupart.html</loc>
-<lastmod>2018-01-23T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>jupart.github.io/posts/kivent/</loc>
+    <lastmod>2017-08-03T00:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/posts/attractor/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/</loc>
+    <lastmod>2020-09-02T21:44:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/android/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/categories/blog/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/buildozer/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/categories/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/cymunk/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/kivent/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/kivy/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/posts/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/python/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>jupart.github.io/tags/</loc>
+    <lastmod>2018-01-23T00:00:00-05:00</lastmod>
+  </url>
+  
 </urlset>

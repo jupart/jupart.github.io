@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Attractor - a game about magnetism</title>
+	
+	
+	<link rel="stylesheet" href="/jupart.github.io/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	===================<br>
+	== <a href="jupart.github.io">jupart&#39;s blog</a> ==<br>
+	===================
+	<div style="float: right;"></div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/jupart.github.io/posts/"><b>Posts</b></a>.
+			
+			<a href="/jupart.github.io/categories/"><b>Categories</b></a>.
+			
+			<a href="/jupart.github.io/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Attractor - a game about magnetism</h1>
+			<b><time>2018-23-01</time></b>
+		       
+		           <a href="/jupart.github.io/tags/kivent">kivent</a>
+        	       
+		           <a href="/jupart.github.io/tags/python">python</a>
+        	       
+		           <a href="/jupart.github.io/tags/buildozer">buildozer</a>
+        	       
+		           <a href="/jupart.github.io/tags/kivy">kivy</a>
+        	       
+		           <a href="/jupart.github.io/tags/android">android</a>
+        	       
+		           <a href="/jupart.github.io/tags/cymunk">cymunk</a>
+        	       
+
+			<div>
+				<p>Magnets are awesome! They have the ability to exert force on other objects via
+an invisible hand. I was working on a separate project when I had an idea: a
+game where the inputs only change a magnet&rsquo;s pole. Attractor is the game I made
+with this in mind.</p>
+<p>While associating talk of magnets with charge is techincally incorrect, I
+thought it would be simpler and easier to understand if I used the terms magnet
+and charge instead of electric dipole and north and south pole, so that&rsquo;s what
+I&rsquo;ll use in this post.</p>
+<h2 id="gameplay">Gameplay</h2>
+<p>In Attractor, you control the polarity of an impossibility: a monopole
+magnet that can change its charge at will. Using three simple buttons on your
+phone or screen you can set your attractor to positive, negative, or neutral
+charge. The buttons cover the play area and are transparent, but the outline of
+each button can be seen at the edge of said area. Depending on the magnets
+around the attractor, it will be pulled,
+pushed, or left alone to float on its current trajectory. Positive (red) repels
+positive and attracts negative (blue), neutral (grey) floats. You can see some
+gameplay below on a development desktop machine.</p>
+<figure>
+    <img src="/ox-hugo/attractor_gameplay.gif" width="600"/> 
+</figure>
+
+<p>The attractor&rsquo;s goal is to reach the end of the current level, marked by the
+hole in the floor. Each level has an ideal number of charge changes and an
+ideal time taken to completion. The Reset button sends the attractor back to
+the beginning of the current level.</p>
+<h3 id="game-objects">Game Objects</h3>
+<ul>
+<li>Magnet - simple stationary monopole magnet that pulls or pushes the attractor</li>
+</ul>
+<figure>
+    <img src="/ox-hugo/posipole_on_first_level_with_yellow_finish.png" width="400"/> 
+</figure>
+
+<ul>
+<li>Rotator - rotating Magnet</li>
+<li>Membrane - an object that lets the attractor through only if its color matches the charge/color of the Membrane</li>
+</ul>
+<figure>
+    <img src="/ox-hugo/membrane_element.png" width="400"/> 
+</figure>
+
+<ul>
+<li>Changer - an object that changes the charge/color of the attractor to match its own</li>
+</ul>
+<figure>
+    <img src="/ox-hugo/changer_element.png" width="400"/> 
+</figure>
+
+<h2 id="code-stuff">Code stuff</h2>
+<p>I&rsquo;m an amateur programmer at best, so the <a href="https://github.com/jupart/attractor">project</a> should just serve as an
+example of what you could do, not what you should do. There are some pretty
+serious separation of concerns issues in the code design I would refactor out
+if I had the time!</p>
+<p>Attractor uses <a href="https://github.com/kivy/kivy">Kivy</a> for its UI elements like buttons, menus, layouts, etc. Kivy
+is a really awesome framework that lets you define UI stuffs in Python or its
+own .kv description files.</p>
+<p>Attractor uses <a href="https://github.com/kivy/kivent">Kivent</a> as its ECS. Kivent lets you prototype systems as Python
+classes and later refit them to Cython for better performance if needed. The
+most important system in this game, <a href="https://github.com/jupart/attractor/blob/develop/ChargeSystem.py">ChargeSystem</a>, is a good example of what
+you can do with Kivent.</p>
+<p>Kivent has a builtin module for using <a href="https://github.com/tito/cymunk">Cymunk</a>, which is a <a href="https://github.com/slembcke/Chipmunk2D">Chipmunk2D</a> wrapper
+for Cython. Attractor uses this for collision detection and correction and to
+apply forces to the attractor.</p>
+<h2 id="what-i-m-proud-of">What I&rsquo;m proud of</h2>
+<ul>
+<li>I didn&rsquo;t use Kivent&rsquo;s builtin Animation System, but instead used
+<code>kivy.animation</code> on simple <code>kivy.graphics</code> objects like <code>Ellipses</code> and
+<code>Rectangles</code>. This way I was able to make art changes via code by changing
+the way the shapes and colors were defined.</li>
+<li>Entities were defined via <a href="https://github.com/jupart/attractor/blob/develop/resources/entities.json">json</a>. I wrote <a href="https://github.com/jupart/attractor/blob/develop/EntityFactory.py">EntityFactory.py</a> to load this file
+and build Kivent entities, which let me abstract away the kind of difficult to use
+Kivent <code>gameworld.init_entity()</code> args.</li>
+<li>The Charge System idea, the core of the game</li>
+<li>The level editor isn&rsquo;t completely horrible. Levels are stored as json
+files, not really anything special I think. I store a location, rotation, and
+entity name that EntityFactory builds with, so there isn&rsquo;t any saved state of
+levels.</li>
+</ul>
+<h2 id="issues-i-ran-into">Issues I ran into</h2>
+<p>It is so cool to be able to make performant apps and games using Python via
+Kivy and Kivent. That being said, it can be pretty painful when it comes time
+to deploy.</p>
+<p>The distribution story with Python, Kivy, and Kivent (in combination) is a
+little rough. I have another post about getting my development environment
+going. In general, while <code>buildozer</code> gets the job done for Android
+deployment, often times it feels like a brittle tool. For example,
+currently I can&rsquo;t put together an .apk for you to try out because of <a href="https://github.com/kivy/buildozer/issues/312">this</a> issue.</p>
+<p>Kivent is great, but the Cython/Python interaction can sometimes lead to errors
+that are very hard to debug. Crashes with cryptic exception messages will be
+frequent when getting started up with Kivent. Here&rsquo;s an example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">File <span style="color:#e6db74">&#34;/home/jupart/Code/Python/attractor/EntityFactory.py&#34;</span>, line 73, in create_entity_at
+    <span style="color:#66d9ef">return</span> self.gameworld.init_entity<span style="color:#f92672">(</span>new_ent_data<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>, new_ent_data<span style="color:#f92672">[</span>1<span style="color:#f92672">])</span>
+File <span style="color:#e6db74">&#34;kivent_core/gameworld.pyx&#34;</span>, line 428, in kivent_core.gameworld.GameWorld.init_entity <span style="color:#f92672">(</span>kivent_core/gameworld.c:8899<span style="color:#f92672">)</span>
+File <span style="color:#e6db74">&#34;kivent_core/managers/system_manager.pyx&#34;</span>, line 163, in kivent_core.managers.system_manager.SystemManager.__getitem__ <span style="color:#f92672">(</span>kivent_core/managers/system_manager.c:2441<span style="color:#f92672">)</span>
+    IndexError: list index out of range
+</code></pre></div><p>Yikes! Make sure when you call <code>self.gameworld.init_entity(components, component_order)</code>,
+that all of the components&rsquo; names are right and are in the right order! It&rsquo;s a
+common error until you set up something like an EntityFactory which abstracts
+that bit away.</p>
+<p>If you run into crashes when running your app on your device, <code>buildozer android logcat</code>
+(or the <code>adb</code> equivalent) is a useful tool for getting debug information on
+what&rsquo;s causing the crash. I fooled around for a while trying to fix a crash
+that was caused by one of my music tracks being 24-bit .wav (or something like
+that). Getting debug via <code>logcat</code> and re-encoding the tracks to 16-bit .wav
+did the trick.</p>
+<h2 id="current-status">Current status</h2>
+<p>This project has sat for a while. I started it in May 2017 and haven&rsquo;t touched
+it since October 2017. I wrote the program, made the art, and wrote/performed
+the music myself. The menu design
+and general UI could use a bit of work, but overall I think the game is fun and
+I like where the project stands today. All told, there are 16 levels in sets of
+4 where each set focuses on a new game element. I hope the project serves as an
+example of what you can accomplish with Python/Kivy/Kivent on mobile and
+desktop machines.</p>
+<p>I don&rsquo;t plan on updating the game any time soon, so I&rsquo;ve released the code and
+art on Github under the MIT license.</p>
+<p>The music tracks are also on Github, but I reserve rights to
+those. Feel free to install on your own device to try out the game or download
+and listen to the tracks, though. If I can get the <code>buildozer</code> script working
+again I&rsquo;ll probably put up a Github release for the .apk, too.</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="jupart.github.io/posts/kivent/">Setting up to deploy Kivent to Android</a></li>
+				
+				<li><a href="jupart.github.io/posts/attractor/">Attractor - a game about magnetism</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2020 <a href="jupart.github.io"><b>jupart&#39;s blog</b></a>.
+	<a href="https://github.com/jupart"><b>Github</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>
