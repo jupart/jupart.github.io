@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on jupart&#39;s blog</title>
+    <link>jupart.github.io/tags/</link>
+    <description>Recent content in Tags on jupart&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Jan 2018 00:00:00 -0500</lastBuildDate>
+    
+	<atom:link href="jupart.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>android</title>
+      <link>jupart.github.io/tags/android/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>buildozer</title>
+      <link>jupart.github.io/tags/buildozer/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/buildozer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cymunk</title>
+      <link>jupart.github.io/tags/cymunk/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/cymunk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kivent</title>
+      <link>jupart.github.io/tags/kivent/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/kivent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kivy</title>
+      <link>jupart.github.io/tags/kivy/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/kivy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>jupart.github.io/tags/python/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 -0500</pubDate>
+      
+      <guid>jupart.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
